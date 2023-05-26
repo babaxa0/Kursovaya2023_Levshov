@@ -1,0 +1,67 @@
+﻿<Window x:Class="Kursovaya2023.EmailMessage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursovaya2023"
+        mc:Ignorable="d"
+        Title="EmailMessage" Height="150" Width="275" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Source/logo.png">
+    <Grid>
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#18222B" Offset="0"/>
+                <GradientStop Color="#014067" Offset="0.5"/>
+                <GradientStop Color="#015486" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid Name="Toolbar" Grid.Row="0" Height="18" Background="Transparent" Width="275" VerticalAlignment="Top" HorizontalAlignment="Center" MouseDown="Toolbar_MouseDown">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Image x:Name="ExitButt" Height="10" Width="10" Stretch="Fill" MouseDown="ExitButt_MouseDown" Margin="0 0 3 0">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="/Source/krestneaktiv.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=ExitButt}"
+                                             Value="True">
+                                    <Setter Property="Source" Value="/Source/krestaktiv.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </StackPanel>
+        </Grid>
+
+        <Grid Height="132" Width="275" VerticalAlignment="Bottom">
+            <Grid.Effect>
+                <DropShadowEffect ShadowDepth="3" BlurRadius="7" Direction="-50"/>
+            </Grid.Effect>
+
+            <TextBlock FontSize="13" Text="Эл.почта должна содержать символ «@»" TextAlignment="Left" Width="280" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Padding="5 0 0 0"/>
+
+            <Button Content="OK" HorizontalAlignment="Right" Height="25" VerticalAlignment="Bottom" Width="55" Margin="0 0 10 10" Background="#FF18222B" BorderBrush="#FF015486" Foreground="White" FontSize="14" FontFamily="Cascadia Code SemiBold" Click="Button_Click">
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                        <Setter Property="Background" Value="#FF44FFBB"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Name="border" BorderThickness="1" BorderBrush="#FF18222B" Background="#FF18222B">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+
+            </Button>
+        </Grid>
+
+    </Grid>
+</Window>

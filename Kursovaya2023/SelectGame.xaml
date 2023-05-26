@@ -1,0 +1,225 @@
+﻿<Window x:Class="Kursovaya2023.SelectGame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursovaya2023"
+        mc:Ignorable="d"
+        Title="SelectGame" Height="700" Width="1050" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Source/logo.png">
+
+    <Window.Resources>
+
+        <Style x:Key="But" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Padding" Value="0 0 0 0"/>
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Opacity" Value="0.15"/>
+            <Setter Property="Content" Value="ВЫБРАТЬ ИГРУ"/>
+            <Setter Property="FontFamily" Value="Cascadia Code SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="root" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" SnapsToDevicePixels="True" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <Border x:Name="Background" BorderThickness="0" CornerRadius="0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#18222B" Offset="0"/>
+                <GradientStop Color="#014067" Offset="0.5"/>
+                <GradientStop Color="#015486" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+
+        <Grid Name="Toolbar" Grid.Row="0" Height="35" Background="Transparent" Width="1050" VerticalAlignment="Top" HorizontalAlignment="Center" MouseDown="Toolbar_MouseDown">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Image Name="MinButt" Height="15" Width="15" Stretch="Fill" Margin="0,3,20,0" MouseDown="MinButt_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="/Source/palkaneaktiv.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=MinButt}"
+                                             Value="True">
+                                    <Setter Property="Source" Value="/Source/palkaaktiv.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Image x:Name="ExitButt" Height="15" Width="15" Stretch="Fill" MouseDown="ExitButt_MouseDown" Margin="0,3,10,0">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="/Source/krestneaktiv.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=ExitButt}"
+                                             Value="True">
+                                    <Setter Property="Source" Value="/Source/krestaktiv.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </StackPanel>
+
+        </Grid>
+
+
+        <Grid Name="double_title" Grid.Row="1" Height="55" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1050" Margin="0 35 0 0">
+
+            <Grid.Effect>
+                <DropShadowEffect ShadowDepth="3" BlurRadius="7" Direction="-50"/>
+            </Grid.Effect>
+            <TextBlock Text="GAMES" Foreground="White" FontSize="45" Margin="10 0 0 0" FontFamily="Cascadia Code SemiBold" />
+
+            <Image MouseDown="Image_MouseDown" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0" Source="/Source/arrow_back.png"/>
+
+        </Grid>
+
+        <Grid VerticalAlignment="Top" HorizontalAlignment="Center" Width="1050" Margin="0 90 0 0" Height="75">
+
+
+
+            <Grid x:Name="logo_dota" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left" Height="70" Width="70" Margin="90 0 0 0">
+                <Image Height="50" HorizontalAlignment="Center" Source="/Source/dota_logo.png"/>
+                <Button Style="{StaticResource But}" Click="Button_Click_1"/>
+            </Grid>
+
+            <Grid x:Name="logo_cs" VerticalAlignment="Center" HorizontalAlignment="Left" Height="70" Width="70" Margin="180 0 0 0">
+                <Image Height="50" HorizontalAlignment="Center" Source="/Source/cs_logo.png"/>
+                <Button Style="{StaticResource But}" Click="Button_Click_2"/>
+            </Grid>
+
+            <Grid x:Name="logo_over" VerticalAlignment="Center" HorizontalAlignment="Left" Height="70" Width="70" Margin="270 0 0 0">
+                <Image Height="50" HorizontalAlignment="Center" Source="/Source/diablo_logo.png"/>
+                <Button Style="{StaticResource But}" Click="Button_Click_3"/>
+            </Grid>
+
+            <Grid x:Name="logo_pubg" VerticalAlignment="Center" HorizontalAlignment="Left" Height="70" Width="70" Margin="360 0 0 0">
+                <Image Height="50" HorizontalAlignment="Center" Source="/Source/lol_logo.png"/>
+                <Button Style="{StaticResource But}" Click="Button_Click_4"/>
+            </Grid>
+
+            <Grid x:Name="logo_war" VerticalAlignment="Center" HorizontalAlignment="Left" Height="70" Width="70" Margin="450 0 0 0">
+                <Image Height="50" HorizontalAlignment="Center" Source="/Source/warzone_logo.png"/>
+                    <Button Style="{StaticResource But}" Click="Button_Click_5"/>
+            </Grid>
+
+
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Left" Height="80" Width="75" Background="White" Opacity="0.15">
+                <Rectangle Width="1050" Height="2" Fill="#FF000B15" VerticalAlignment="Bottom"/>
+                <Rectangle Width="1050" Height="2" Fill="#FF000B15" VerticalAlignment="Top"/>
+
+            </Grid>
+
+            <Grid MouseDown="Grid_MouseDown" Height="45" Width="45" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0">
+                <Rectangle Width="10" Height="10" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5 5 0 0" Fill="#FF191919"/>
+                <Rectangle Width="10" Height="10" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 5 0 0" Fill="#FF191919"/>
+                <Rectangle Width="10" Height="10" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 5 5 0" Fill="#FF191919"/>
+                <Rectangle Width="10" Height="10" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5 0 0 0" Fill="#FF191919"/>
+                <Rectangle Width="10" Height="10" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 0" Fill="#FF191919"/>
+                <Rectangle Width="10" Height="10" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0" Fill="#FF191919"/>
+                <Rectangle Width="10" Height="10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="5 0 0 5" Fill="#FF191919"/>
+                <Rectangle Width="10" Height="10" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 0 0 5" Fill="#FF191919"/>
+                <Rectangle Width="10" Height="10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 5 5" Fill="#FF191919"/>
+            </Grid>
+
+            <Rectangle Height="75" Width="15" Fill="#FF000B15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="65 0 0 0"/>
+            <Grid>
+                <Grid.Effect>
+                    <DropShadowEffect ShadowDepth="3" BlurRadius="7" Direction="-50"/>
+                </Grid.Effect>
+                <Rectangle Width="1050" Height="1" Margin="0 0 0 0" Fill="#ff000b15" VerticalAlignment="Bottom"/>
+                <Rectangle Width="1050" Height="1" Margin="0 0 0 0" Fill="#ff000b15" VerticalAlignment="Top"/>
+            </Grid>
+
+        </Grid>
+
+        <Grid Background="#FF000B15" Height="535" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="80">
+            <Grid.Effect>
+                <DropShadowEffect ShadowDepth="3" BlurRadius="7" Direction="-50"/>
+            </Grid.Effect>
+
+            <Grid x:Name="white_dota_logo" Background="Transparent" VerticalAlignment="top" HorizontalAlignment="Center" Height="100" Width="80">
+                <Image Height="50" HorizontalAlignment="Center" Source="/Source/white_dota.png"/>
+                <Button Style="{StaticResource But}" Click="Button_Click_7"/>
+            </Grid>
+
+            <Grid x:Name="white_cs_logo" Background="Transparent" VerticalAlignment="top" HorizontalAlignment="Center" Height="120" Width="80" Margin="0 100 0 0">
+                <Image Height="50" HorizontalAlignment="Center" Source="/Source/white_cs_logo.png"/>
+                <Button Style="{StaticResource But}" Click="Button_Click_8"/>
+            </Grid>
+
+            <Grid x:Name="white_over_logo" Background="Transparent" VerticalAlignment="top" HorizontalAlignment="Center" Height="100" Width="80" Margin="0 200 0 0">
+                <Image Height="50" HorizontalAlignment="Center" Source="/Source/white_diablo_logo.png"/>
+                <Button Style="{StaticResource But}" Click="Button_Click_9"/>
+            </Grid>
+
+            <Grid x:Name="white_pubg_logo" Background="Transparent" VerticalAlignment="top" HorizontalAlignment="Center" Height="100" Width="80" Margin="0 300 0 0">
+                <Image Height="50" HorizontalAlignment="Center" Source="/Source/white_lol_logo.png"/>
+                <Button Style="{StaticResource But}" Click="Button_Click_10"/>
+            </Grid>
+
+            <Grid x:Name="white_warzone_logo" Background="Transparent" VerticalAlignment="top" HorizontalAlignment="Center" Height="100" Width="80" Margin="0 400 0 0">
+                <Image Height="50" HorizontalAlignment="Center" Source="/Source/white_warzone_logo.png"/>
+                <Button Style="{StaticResource But}" Click="Button_Click_11"/>
+            </Grid>
+
+        </Grid>
+
+        <Grid Height="535" Width="970" VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="Transparent">
+
+            <Grid.Effect>
+                <DropShadowEffect ShadowDepth="3"  BlurRadius="7" Direction="-50"/>
+            </Grid.Effect>
+
+            <Label Content="Выберите игру" Margin="0 0 0 60" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="40" FontFamily="Cascadia Code SemiBold"/>
+
+            <Border BorderThickness="2" BorderBrush="#FF000B15" Width="240" Height="135" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30 50 0 0" Background="Transparent">
+                <Image MouseDown="Image_MouseDown_1" Source="/Source/back_dota.jpg"/>
+            </Border>
+            <Label VerticalAlignment="Top" HorizontalAlignment="Left" Content="DOTA 2" Foreground="#FF44FFBB" FontFamily="Cascadia Code SemiBold" FontSize="28" Margin="90 190 0 0"/>
+
+            <Border HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#FF000B15" Width="240" Height="135" Margin="0 50 30 0">
+                <Image MouseDown="Image_MouseDown_2" Source="/Source/back_cs.jpg"/>
+            </Border>
+            <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Counter-Strike:" Foreground="#FF44FFBB" FontFamily="Cascadia Code SemiBold" FontSize="28" Margin="0 190 20 0"/>
+            <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="Global Offensive" Foreground="#FF44FFBB" FontFamily="Cascadia Code SemiBold" FontSize="28" Margin="0 220 20 0"/>
+
+            <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#FF000B15" Width="240" Height="135" Margin="30 270 0 0">
+                <Image MouseDown="Image_MouseDown_3" Source="/Source/back_warzone.jpg"/>
+            </Border>
+            <Label VerticalAlignment="Top" HorizontalAlignment="Left" Content="Call of Duty:" Foreground="#FF44FFBB" FontFamily="Cascadia Code SemiBold" FontSize="28" Margin="40 410 0 0"/>
+            <Label VerticalAlignment="Top" HorizontalAlignment="Left" Content="Warzone" Foreground="#FF44FFBB" FontFamily="Cascadia Code SemiBold" FontSize="28" Margin="80 440 0 0"/>
+
+            <Border HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#FF000B15" Width="240" Height="135" Margin="0 270 30 0">
+                <Image MouseDown="Image_MouseDown_4" Source="/Source/lol_back.jpg"/>
+            </Border>
+            <Label VerticalAlignment="Top" HorizontalAlignment="Right" Content="League of Legends" Foreground="#FF44FFBB" FontFamily="Cascadia Code SemiBold" FontSize="28" Margin="0 410 20 0"/>
+
+            <Border HorizontalAlignment="Center" VerticalAlignment="Bottom" BorderThickness="2" BorderBrush="#FF000B15" Width="240" Height="135" Margin="0 0 0 60">
+                <Image MouseDown="Image_MouseDown_5" Source="/Source/back_diablo.png"/>
+            </Border>
+            <Label VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Diablo IV" Foreground="#FF44FFBB" FontFamily="Cascadia Code SemiBold" FontSize="28" Margin="0 0 0 10"/>
+        
+        </Grid>
+
+    </Grid>
+</Window>
